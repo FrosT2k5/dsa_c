@@ -1,6 +1,6 @@
 import java.lang.System;
 import java.util.*;
-public class hello {
+public class SimpleInterest {
     public static void main(String[] args) {
         float p,r,n,si;
         Scanner scanner = new Scanner(System.in);
