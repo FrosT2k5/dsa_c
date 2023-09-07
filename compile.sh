@@ -1,27 +1,27 @@
 #!/bin/bash
-setvim=0
-while getopts "vc" flag; do
+setnano=0
+while getopts "nc" flag; do
     case $flag in
-        v)
-        setvim=1 ;;
+        n)
+        setnano=1 ;;
         c)
-        setvim=2 ;;
+        setnano=2 ;;
     esac
 done
 shift $(( OPTIND-1 ))
 
 
 if [ "$1" = "" ] ;then
-    echo -e "Usage: $0 [args] <folder/filename>\n compiles file and removes it after execution \n\nArguments: \n -v: Use vim instead of nano \n -c: Compile without opening text editor"
+    echo -e "Usage: $0 [args] <folder/filename>\n compiles file and removes it after execution \n\nArguments: \n -n: Use nano instead of vim \n -c: Compile without opening text editor"
     exit 1
 fi
 
-if [ $setvim -eq 1 ] ;then
-    vim $1
-elif [ $setvim -eq 2 ] ;then
+if [ $setnano -eq 1 ] ;then
+    nano $1
+elif [ $setnano -eq 2 ] ;then
     echo "Compiling $1"
 else
-    nano $1
+    vim $1
 fi
 
 clang -lm $1 -o $1.out
